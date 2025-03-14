@@ -15,7 +15,7 @@ MAX_VEL_ERR = 5.0
 def clip_curvature(v_ego, prev_curvature, new_curvature):
   new_curvature = np.clip(new_curvature, -MAX_CURVATURE, MAX_CURVATURE)
   v_ego = max(MIN_SPEED, v_ego)
-  max_curvature_rate = MAX_LATERAL_JERK / (v_ego**2) # inexact calculation, check https://github.com/commaai/openpilot/pull/24755
+  max_curvature_rate = MAX_LATERAL_JERK / (v_ego**2) # inexact calculation, check https://github.com/commaai/openpilot/
   safe_desired_curvature = np.clip(new_curvature,
                                 prev_curvature - max_curvature_rate * DT_CTRL,
                                 prev_curvature + max_curvature_rate * DT_CTRL)
